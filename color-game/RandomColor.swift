@@ -11,18 +11,19 @@ import UIKit
 
 
 struct randomRGB {
-    var red: CGFloat
-    var green: CGFloat
-    var blue: CGFloat
+    var red: CGFloat = 0.0
+    var green: CGFloat = 0.0
+    var blue: CGFloat = 0.0
 
     mutating func randomColor() -> UIColor {
-        self.red = CGFloat.random(in: 0.0...1.0)
-        self.green = CGFloat.random(in: 0.0...1.0)
-        self.blue = CGFloat.random(in: 0.0...1.0)
-        return UIColor(red: red,
-                       green: green,
-                       blue: blue,
-                       alpha: 1.0)
+        red = CGFloat.random(in: 0.0...1.0)
+        green = CGFloat.random(in: 0.0...1.0)
+        blue = CGFloat.random(in: 0.0...1.0)
+        let myColor = UIColor(red: red,
+                              green: green,
+                              blue: blue,
+                              alpha: 1.0)
+        return myColor
     }
 }
 

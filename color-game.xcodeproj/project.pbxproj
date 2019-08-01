@@ -99,12 +99,11 @@
 		1D11FE4622F0D328008DA431 /* color-game */ = {
 			isa = PBXGroup;
 			children = (
-				1D11FE4722F0D328008DA431 /* AppDelegate.swift */,
+				1DFA4EC922F331AE007A8FDC /* Supporting Files */,
 				1D11FE4922F0D328008DA431 /* ViewController.swift */,
 				1D11FE4B22F0D328008DA431 /* Main.storyboard */,
 				1D11FE7522F0E6E1008DA431 /* RandomColor.swift */,
 				1D11FE4E22F0D32A008DA431 /* Assets.xcassets */,
-				1D11FE5022F0D32A008DA431 /* LaunchScreen.storyboard */,
 				1D11FE5322F0D32A008DA431 /* Info.plist */,
 			);
 			path = "color-game";
@@ -126,6 +125,15 @@
 				1D11FE6922F0D32B008DA431 /* Info.plist */,
 			);
 			path = "color-gameUITests";
+			sourceTree = "<group>";
+		};
+		1DFA4EC922F331AE007A8FDC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1D11FE4722F0D328008DA431 /* AppDelegate.swift */,
+				1D11FE5022F0D32A008DA431 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
