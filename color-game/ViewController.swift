@@ -11,18 +11,17 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var background: UIView!
-    
     @IBOutlet weak var redButton: UIButton!
     @IBOutlet weak var greenButton: UIButton!
     @IBOutlet weak var blueButton: UIButton!
     @IBOutlet weak var newGame: UIButton!
     @IBOutlet weak var gameOver: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var highScoreLabel: UILabel!
     var gameOverBool = false
     var highScore = 0
-    let random = randomRGB()
-//    let colors = randomRGB()
     var score = 0
-  let biggestRGB = putRGBColorsInArrayAndReturnBiggestNumber(red: colors.red, green: colors.green, blue: colors.blue)
+    var colorChange = RandomRGB()
     
     func checkForNewGameButtonVisibility() {
         if gameOverBool == true {
@@ -32,42 +31,65 @@ class ViewController: UIViewController {
     }
     
     func winOrLose(color: CGFloat) {
-        if biggestRGB == color {
+        if colorChange.comparison(color: color) == true {
             score += 1
-            background.backgroundColor = random.randomColor()
+            resetBackground()
+            scoreLabel.text = "Score: \(score)"
+            if score > highScore {
+                highScore = score
+                highScoreLabel.text = "High Score: \(highScore)"
+            }
         } else {
             score = 0
+            scoreLabel.text = "Score: \(score)"
+            if score > highScore {
+                highScore = score
+                highScoreLabel.text = "High Score: \(highScore)"
+            }
             gameOverBool = true
+            blueButton.isEnabled = false
+            greenButton.isEnabled = false
+            redButton.isEnabled = false
+            checkForNewGameButtonVisibility()
         }
     }
     
-    @IBAction func buttonThatChangesColorOfView(_ sender: UIButton) {
-        background.backgroundColor = random.randomColor()
-//        gameOverBool = false
+    
+    @IBAction func newGame(_ sender: UIButton) {
+        viewDidLoad()
     }
     
     
     @IBAction func blueButton(_ sender: UIButton) {
-        let blue = colors.blue
-//        winOrLose(color: blue)
+        let blue = colorChange.blue
+        winOrLose(color: blue)
     }
     
     @IBAction func greenButton(_ sender: UIButton) {
-        let green = colors.green
-//        winOrLose(color: green)
+        let green = colorChange.green
+        winOrLose(color: green)
     }
     @IBAction func redButton(_ sender: UIButton) {
-        let red = colors.red
-//        winOrLose(color: red)
+        let red = colorChange.red
+        winOrLose(color: red)
+    }
+    
+    private func resetBackground() {
+        colorChange = RandomRGB()
+        blueButton.isEnabled = true
+        greenButton.isEnabled = true
+        redButton.isEnabled = true
+        background.backgroundColor = colorChange.getColor()
     }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        resetBackground()
+        newGame.isHidden = true
+        gameOver.isHidden = true
         // Do any additional setup after loading the view.
     }
-
-
 }
 

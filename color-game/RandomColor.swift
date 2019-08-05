@@ -10,33 +10,38 @@ import Foundation
 import UIKit
 
 
-struct randomRGB {
-    var red: CGFloat = 0.0
-    var green: CGFloat = 0.0
-    var blue: CGFloat = 0.0
+struct RandomRGB {
+    var red: CGFloat
+    var green: CGFloat
+    var blue: CGFloat
 
-    mutating func randomColor() -> UIColor {
+    init(){
         red = CGFloat.random(in: 0.0...1.0)
         green = CGFloat.random(in: 0.0...1.0)
         blue = CGFloat.random(in: 0.0...1.0)
+    }
+    
+    func getColor() -> UIColor {
         let myColor = UIColor(red: red,
                               green: green,
                               blue: blue,
                               alpha: 1.0)
         return myColor
     }
+    
+    //do the comparison of button pressed to highest property here -> Bool
+    func comparison(color: CGFloat) -> Bool {
+        
+        var currentColorRGBArr: [CGFloat] = []
+        currentColorRGBArr.append(red)
+        currentColorRGBArr.append(green)
+        currentColorRGBArr.append(blue)
+        let biggestRGB = currentColorRGBArr.max()!
+        
+        return biggestRGB == color
+    }
 }
 
 
-func putRGBColorsInArrayAndReturnBiggestNumber(red: CGFloat, green: CGFloat, blue: CGFloat) -> CGFloat {
-    var currentColorRGBArr: [CGFloat] = []
-    currentColorRGBArr.append(red)
-    currentColorRGBArr.append(green)
-    currentColorRGBArr.append(blue)
-    let biggestRGB = currentColorRGBArr.max()!
-    return biggestRGB
-}
 
-//put this stuff in the view controller
 
-//put this stuff in the view controller
